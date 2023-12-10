@@ -1,36 +1,92 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/YaSKfRKSBqO
- */
 import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { type JSX, type SVGProps } from "react";
 
-export default function Component() {
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import { getServerSession } from "next-auth/next";
+
+import Unauth from "@/components/unauth";
+import { authOptions } from "@/server/auth";
+
+export default async function Component() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return <Unauth />;
+  }
   return (
-    <div className="flex h-screen flex-col p-4">
+    <div className="flex h-screen flex-col bg-blue-500 p-4">
       <header className="mb-4">
         <h1 className="text-2xl font-semibold">Main Menu</h1>
       </header>
       <main className="grid flex-1 gap-4">
-        <Card>
-          <CardContent className="flex items-center gap-4">
+        <Card className="flex items-center justify-center">
+          <CardContent className="flex items-center gap-4 ">
             <UserIcon className="h-8 w-8" />
-            <Link className="text-lg font-semibold" href="#">
-              Forum
+            <Link className="text-lg font-semibold" href="/aplication/forum">
+              Foro
             </Link>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="flex items-center justify-center">
           <CardContent className="flex items-center gap-4">
             <ActivityIcon className="h-8 w-8" />
-            <Link className="text-lg font-semibold" href="#">
-              Start a New Exercise
-            </Link>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline">Empezar Rutina</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Empezar rutina</DialogTitle>
+                  <DialogDescription>
+                    Donde vas a realizar tu rutina?
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex flex-col items-center">
+                  <Link href="/aplication/ejercicio?tipo=gym" className="py-3 ">
+                    <Button variant="outline" className="w-20">
+                      Gimnasio
+                    </Button>
+                  </Link>
+                  <Link
+                    href="/aplication/ejercicio?tipo=home"
+                    className="py-3 "
+                  >
+                    <Button variant="outline" className="w-20">
+                      Casa
+                    </Button>
+                  </Link>
+                  <Link
+                    href="/aplication/ejercicio?tipo=airelibre"
+                    className="py-3 "
+                  >
+                    <Button variant="outline" className="w-20">
+                      Aire libre
+                    </Button>
+                  </Link>
+                </div>
+                <DialogFooter className="sm:justify-start">
+                  <DialogClose asChild>
+                    <Button type="button" variant="destructive">
+                      Cancelar
+                    </Button>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="flex items-center justify-center">
           <CardContent className="flex items-center gap-4">
             <NutIcon className="h-8 w-8" />
             <Link className="text-lg font-semibold" href="#">

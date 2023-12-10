@@ -108,3 +108,18 @@ export const verificationTokens = mysqlTable(
     compoundKey: primaryKey(vt.identifier, vt.token),
   })
 );
+
+export const rutina = mysqlTable(
+  "rutina",
+  {
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+    title: varchar("nombre", { length: 256 }),
+    descripcion: varchar("descripcion", { length: 256 }),
+    type: varchar("type", { length: 256 }).notNull(),
+    ownerId: varchar("createdById", { length: 255 }).notNull(),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    lastUsed: timestamp("updatedAt").onUpdateNow(),
+  },
+);
