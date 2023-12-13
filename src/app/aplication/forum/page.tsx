@@ -15,8 +15,8 @@ import InstagramPost from "@/components/instagramPost";
 
 const anunciosJson = [
   {
-    title: "Anuncio 1",
-    description: "Descripcion 1",
+    title: "Evento de calistenia",
+    description: "Descubre el mundo de la calistenia",
     url: "https://www.google.com",
     info: "Info 1",
   },
@@ -119,7 +119,7 @@ export default function Component() {
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-3xl">Anuncios</AccordionTrigger>
             <AccordionContent>
-              <ScrollArea className="h-[450px]">
+              <ScrollArea className="">
                 <div className="grid gap-4">
                   {anunciosJson.map((anuncio) => (
                     <AnuncioCard
