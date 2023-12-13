@@ -21,7 +21,7 @@ type Props = {
 
 export default function AnuncioCard({ title, description, url, info }: Props) {
   return (
-    <a href={url} target="_blank">
+    <a href={url} target="_blank" key={info}>
       <Alert>
         <ExclamationTriangleIcon className="h-4 w-4" />
         <AlertTitle>{title}</AlertTitle>
