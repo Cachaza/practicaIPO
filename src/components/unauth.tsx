@@ -21,6 +21,12 @@ export default function Unauth() {
           >
             Volver al inicio
           </Link>
+          <Link
+            className="inline-flex h-10 items-center justify-center rounded-md bg-blue-500 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:pointer-events-none disabled:opacity-50"
+            href="/api/auth/signin"
+          >
+            Iniciar sesión
+          </Link>
         </div>
       </div>
     </section>

@@ -26,8 +26,13 @@ export default async function Component() {
   }
   return (
     <div className="flex h-screen flex-col bg-blue-500 p-4">
-      <header className="mb-4">
+      <header className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Main Menu</h1>
+        <img
+          src="https://cdn.discordapp.com/attachments/1060294332646690888/1184545250065256450/4d7d579b-632b-4cec-b551-94995f9c82e3.jpg?ex=658c5cbb&is=6579e7bb&hm=34911917f2d973730dc673527d0284cec3941ab811167607686598c0dee5c775&"
+          alt="Logo de la app"
+          className="w-10 rounded-xl"
+        />
       </header>
       <main className="grid flex-1 gap-4">
         <Card className="flex items-center justify-center">
