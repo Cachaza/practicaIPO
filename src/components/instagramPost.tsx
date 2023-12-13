@@ -53,7 +53,10 @@ export default function InstagramPost({
           href="#"
         >
           <Avatar className="h-8 w-8 border">
-            <AvatarImage alt="@shadcn" src={userImage} />
+            <AvatarImage
+              alt={"Imagen de usuario de: " + userName}
+              src={userImage}
+            />
             <AvatarFallback>AC</AvatarFallback>
           </Avatar>
           {userName}
@@ -87,7 +90,7 @@ export default function InstagramPost({
       </CardHeader>
       <CardContent className="p-0">
         <img
-          alt="Image"
+          alt="Imagen de post de usuario"
           className="aspect-square object-cover"
           height="400"
           src={postImage}
