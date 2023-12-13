@@ -100,9 +100,7 @@ export default async function Component() {
           </CardContent>
         </Card>
       </main>
-      <footer className="mt-4">
-        <Button className="w-full">Logout</Button>
-      </footer>
+      <footer className="mt-4"></footer>
     </div>
   );
 }
