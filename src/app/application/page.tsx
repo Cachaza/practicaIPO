@@ -54,13 +54,16 @@ export default async function Component() {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col items-center">
-                  <Link href="/aplication/ejercicio?tipo=gym" className="py-3 ">
+                  <Link
+                    href="/application/ejercicio?tipo=gym"
+                    className="py-3 "
+                  >
                     <Button variant="outline" className="w-20">
                       Gimnasio
                     </Button>
                   </Link>
                   <Link
-                    href="/aplication/ejercicio?tipo=home"
+                    href="/application/ejercicio?tipo=home"
                     className="py-3 "
                   >
                     <Button variant="outline" className="w-20">
@@ -68,7 +71,7 @@ export default async function Component() {
                     </Button>
                   </Link>
                   <Link
-                    href="/aplication/ejercicio?tipo=airelibre"
+                    href="/application/ejercicio?tipo=airelibre"
                     className="py-3 "
                   >
                     <Button variant="outline" className="w-20">

@@ -120,7 +120,7 @@ export default function Component() {
 
   return (
     <div className="">
-      <Navbar route="Foro" atras="/aplication" />
+      <Navbar route="Foro" atras="/application" />
       <div className="grid grid-cols-1 gap-4 p-2">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
