@@ -5,7 +5,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
-import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenuTrigger,
@@ -14,45 +14,19 @@ import {
   DropdownMenuContent,
   DropdownMenu,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton } from "./ui/skeleton";
 
 import { type JSX, type SVGProps } from "react";
 
-type Props = {
-  userName: string;
-  userImage: string;
-  postImage: string;
-  postDescription: string;
-  postComments:
-    | {
-        userName: string;
-        comment: string;
-      }[]
-    | null;
-};
-
-export default function InstagramPost({
-  userName,
-  userImage,
-  postImage,
-  postDescription,
-  postComments,
-}: Props) {
+export default function InstagramPostSkeleton() {
   return (
     <Card className="border-gray-430 rounded-lg border-2 shadow-none">
       <CardHeader className="flex flex-row items-center p-4">
-        <Link
-          className="flex items-center gap-2 text-sm font-semibold"
-          href="#"
-        >
-          <Avatar className="h-8 w-8 border">
-            <AvatarImage
-              alt={"Imagen de usuario de: " + userName}
-              src={userImage}
-            />
-            <AvatarFallback>AC</AvatarFallback>
-          </Avatar>
-          {userName}
-        </Link>
+        <div className="flex items-center gap-2 text-sm font-semibold">
+          <Skeleton className="h-8 w-8 rounded-full" />
+
+          <Skeleton className="h-4 w-16" />
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -81,13 +55,7 @@ export default function InstagramPost({
         </DropdownMenu>
       </CardHeader>
       <CardContent className="p-0">
-        <img
-          alt="Imagen de post de usuario"
-          className="aspect-square object-cover"
-          height="400"
-          src={postImage}
-          width="400"
-        />
+        <Skeleton className="aspect-square w-[400px]" />
       </CardContent>
       <CardFooter className="grid gap-2 p-2 pb-4">
         <div className="flex w-full items-center">
@@ -109,20 +77,14 @@ export default function InstagramPost({
           </Button>
         </div>
         <div>
-          <Link className="font-medium" href="#">
-            {userName + " "}
-          </Link>
-          {postDescription.slice(0, 50)}
+          <div className="pb-2 font-medium">
+            <Skeleton className="h-4 w-16" />
+          </div>
+          <Skeleton className="h-4 w-32" />
         </div>
-        <div className="grid w-full gap-1.5 px-2 text-sm">
-          {postComments?.map((comment) => (
-            <div className="flex items-center gap-2">
-              <Link className="font-medium" href="#">
-                {comment.userName}
-              </Link>
-              <span>{comment.comment.slice(0, 50)}</span>
-            </div>
-          ))}
+        <div className="grid w-full gap-1.5 p-2 text-sm">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-4 w-32" />
         </div>
       </CardFooter>
     </Card>

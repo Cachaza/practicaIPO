@@ -17,14 +17,17 @@ export const postRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(z.object({ title: z.string().min(1), photoLink: z.string() }))
     .mutation(async ({ ctx, input }) => {
       // simulate a slow db call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       await ctx.db.insert(posts).values({
-        name: input.name,
+        title: input.title,
         createdById: ctx.session.user.id,
+        photoLink: input.photoLink,
+        createdByName: ctx.session.user.name ?? "Anonymous",
+        userPhotoLink: ctx.session.user.image ?? "https://avatars.githubusercontent.com/u/11354539?v=4",
       });
     }),
 
@@ -36,5 +39,11 @@ export const postRouter = createTRPCRouter({
 
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
+  }),
+
+  getPosts: protectedProcedure.query(({ctx}) => {
+    return ctx.db.query.posts.findMany({
+      orderBy: (posts, { desc }) => [desc(posts.createdAt)],
+    });
   }),
 });

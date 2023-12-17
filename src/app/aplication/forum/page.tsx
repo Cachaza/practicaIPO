@@ -8,10 +8,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { type JSX, type SVGProps } from "react";
 
 import AnuncioCard from "@/components/anuncioCard";
 import InstagramPost from "@/components/instagramPost";
+import Navbar from "@/components/navbar";
+import { Button } from "@/components/ui/button";
+import CrearPost from "@/components/createPost";
+import { api } from "@/trpc/react";
+import InstagramPostSkeleton from "@/components/instagramPostSkeleton";
 
 const anunciosJson = [
   {
@@ -105,15 +109,18 @@ const InstagramPostJson = [
     userName: "Shad",
     userImage: "https://avatars.githubusercontent.com/u/11354539?v=4",
     postImage:
-      "https://files.oaiusercontent.com/file-a1hx7BJXWsJZlViOPKtxwjB4?se=2023-12-13T18%3A08%3A58Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D63c4f7fe-779a-4881-986e-87fed8646e38.webp&sig=ezJ2t2nnXDDwYnwodYcu/QpzQX5KPhMRbSKh18%2B8lxU%3D",
+      "https://media.discordapp.net/attachments/1060294332646690888/1185736768604094484/DALLE_2023-12-17_01.14.29_-_A_healthy_meal_designed_for_weight_loss_beautifully_presented_on_a_white_plate._The_meal_includes_a_grilled_chicken_breast_a_side_of_steamed_broccol.png?ex=6590b26b&is=657e3d6b&hm=097777b478e0c900c5f4bd0815b0d0e581743db5ec4a9180b6a8fa9af2131cf6&=&format=webp&quality=lossless&width=678&height=678",
     postDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quidem, quibusdam, voluptate",
   },
 ];
 
 export default function Component() {
+  const getPosts = api.post.getPosts.useQuery();
+
   return (
     <div className="">
+      <Navbar route="Foro" atras="/aplication" />
       <div className="grid grid-cols-1 gap-4 p-2">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
@@ -134,15 +141,28 @@ export default function Component() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        {InstagramPostJson.map((post) => (
+        <div className="flex justify-center">
+          <CrearPost />
+        </div>
+        {getPosts.data?.map((post) => (
           <InstagramPost
-            userName={post.userName}
-            userImage={post.userImage}
-            postImage={post.postImage}
-            postDescription={post.postDescription}
-            postComments={post.postComments ?? null}
+            userName={post.createdByName}
+            userImage={post.userPhotoLink}
+            postImage={post.photoLink}
+            postDescription={post.title}
+            postComments={null}
           />
         ))}
+        {getPosts.isLoading && (
+          <div>
+            <InstagramPostSkeleton />
+            <InstagramPostSkeleton />
+            <InstagramPostSkeleton />
+            <InstagramPostSkeleton />
+            <InstagramPostSkeleton />
+            <InstagramPostSkeleton />
+          </div>
+        )}
       </div>
     </div>
   );
