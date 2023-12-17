@@ -44,7 +44,7 @@ export default async function Home() {
 function botonApplication() {
   return (
     <div className="flex items-center justify-center text-black">
-      <Link href="/aplication">
+      <Link href="/application">
         <Button variant="default">Acceder a la aplicación</Button>
       </Link>
     </div>
