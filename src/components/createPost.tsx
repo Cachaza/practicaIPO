@@ -48,7 +48,9 @@ export default function CrearPost() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Crear post</Button>
+        <Button variant="default" className="text-xl">
+          Crear post
+        </Button>
       </DialogTrigger>
       <DialogContent className="w-80 rounded-lg">
         <DialogHeader>

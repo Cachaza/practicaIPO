@@ -53,36 +53,10 @@ export default function InstagramPost({
           </Avatar>
           {userName}
         </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              className="ml-auto h-8 w-8 rounded-full"
-              size="icon"
-              variant="ghost"
-            >
-              <MoreHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <BookmarkIcon className="mr-2 h-4 w-4" />
-              Save
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <StarIcon className="mr-2 h-4 w-4" />
-              Add to favorites
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <FileWarningIcon className="mr-2 h-4 w-4" />
-              Report
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </CardHeader>
       <CardContent className="p-0">
         <img
-          alt="Imagen de post de usuario"
+          alt={"Imagen de publicación de: " + userName + " " + postDescription}
           className="aspect-square object-cover"
           height="400"
           src={postImage}

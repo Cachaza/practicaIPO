@@ -121,11 +121,11 @@ export default function Component() {
   return (
     <div className="">
       <Navbar route="Foro" atras="/application" />
-      <div className="grid grid-cols-1 gap-4 p-2">
+      <div className="grid grid-cols-1 gap-4 p-2 ">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-3xl">Anuncios</AccordionTrigger>
-            <AccordionContent>
+            <AccordionContent className="">
               <ScrollArea className="">
                 <div className="grid gap-4">
                   {anunciosJson.map((anuncio) => (
