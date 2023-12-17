@@ -125,4 +125,26 @@ export const rutina = mysqlTable(
       .notNull(),
     lastUsed: timestamp("updatedAt").onUpdateNow(),
   },
+  
 );
+
+export const exercises = mysqlTable(
+  "exercise",
+  {
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+    rutinaId: bigint("rutinaId", { mode: "number" }).notNull(),
+    name: varchar("name", { length: 255 }).notNull(),
+    description: text("description"),
+    sets: int("sets").notNull(),
+    repsPerSet: int("repsPerSet").notNull(),
+    progress: text("progress"), // This could be a JSON field, text, etc., based on how you want to track progress
+  },
+  (exercise) => ({
+    rutinaIdIdx: index("rutinaId_idx").on(exercise.rutinaId),
+  })
+);
+export const rutinasRelations = relations(rutina, ({ many }) => ({
+  exercises: many(exercises),
+}));
+
+

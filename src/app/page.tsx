@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { getServerAuthSession } from "@/server/auth";
+import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   const session = await getServerAuthSession();
@@ -27,6 +28,7 @@ export default async function Home() {
                 <span>Sessión iniciada como {session.user?.name}</span>
               )}
             </p>
+            {session && botonApplication()}
             <Link
               href={session ? "/api/auth/signout" : "/api/auth/signin"}
               className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
@@ -37,5 +39,14 @@ export default async function Home() {
         </div>
       </div>
     </main>
+  );
+}
+function botonApplication() {
+  return (
+    <div className="flex items-center justify-center text-black">
+      <Link href="/aplication">
+        <Button variant="default">Acceder a la aplicación</Button>
+      </Link>
+    </div>
   );
 }
