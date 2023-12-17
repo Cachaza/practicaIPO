@@ -34,7 +34,7 @@ export default async function Component() {
         <Card className="flex items-center justify-center">
           <CardContent className="flex items-center gap-4 ">
             <UserIcon className="h-8 w-8" />
-            <Link className="text-lg font-semibold" href="/aplication/forum">
+            <Link className="text-lg font-semibold" href="/application/forum">
               Foro
             </Link>
           </CardContent>
