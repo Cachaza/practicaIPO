@@ -21,20 +21,24 @@ const anunciosJson = [
   {
     title: "Evento de calistenia",
     description: "Descubre el mundo de la calistenia",
-    url: "https://www.google.com",
+    url: "/application/forum/anuncios?id=1",
     info: "Info 1",
+    id: 1,
   },
   {
-    title: "Anuncio 2",
-    description: "Descripcion 2",
-    url: "https://www.google.com",
+    title: "Encuentro yoga",
+    description: "Descubre el mundo del yoga, este sabado en el parque central",
+    url: "/application/forum/anuncios?id=2",
     info: "Info 2",
+    id: 2,
   },
   {
-    title: "Anuncio 3",
-    description: "Descripcion 3",
-    url: "https://www.google.com",
+    title: "Jornada de futbol",
+    description:
+      "Ven a jugar futbol con nosotros, este domingo en el parque sois todos bienvenidos",
+    url: "/application/forum/anuncios?id=3",
     info: "Info 3",
+    id: 3,
   },
 ];
 
