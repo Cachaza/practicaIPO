@@ -9,11 +9,15 @@ interface NavbarProps {
 export default function Navbar({ route, atras }: NavbarProps) {
   return (
     <div className="flex h-16 items-center justify-between rounded-b-lg bg-blue-500">
-      <Link href={atras} about="Volver atras">
+      <Link href={atras} about="Volver atras" aria-label="Volver atras">
         <ResetIcon className="h-8 w-8" />
       </Link>
       <h1 className="text-3xl font-semibold text-white">{route}</h1>
-      <Link href="/application" about="Volver al menu principal">
+      <Link
+        href="/application"
+        about="Volver al menu principal"
+        aria-label="Volver al menu principal"
+      >
         <img
           src="https://cdn.discordapp.com/attachments/1060294332646690888/1184545250065256450/4d7d579b-632b-4cec-b551-94995f9c82e3.jpg?ex=658c5cbb&is=6579e7bb&hm=34911917f2d973730dc673527d0284cec3941ab811167607686598c0dee5c775&"
           alt="Logo de la app"

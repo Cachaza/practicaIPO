@@ -113,7 +113,11 @@ export default async function Component() {
 
           <CardContent className="z-10 flex w-56 items-center justify-center gap-4 rounded-lg border-2 border-black bg-white pt-5 text-black">
             <NutIcon className="h-8 w-8" />
-            <Link className="text-lg font-semibold" href="#">
+            <Link
+              className="text-lg font-semibold"
+              href="#"
+              aria-label="Acceder a apartado de nutricion"
+            >
               Nutrición
             </Link>
           </CardContent>
