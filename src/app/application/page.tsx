@@ -25,26 +25,43 @@ export default async function Component() {
   if (!session) {
     return <Unauth />;
   }
+
   return (
-    <div className="flex h-screen flex-col bg-blue-500 p-4">
+    <div className="flex h-screen flex-col bg-gradient-to-b from-blue-500 via-blue-400 to-amber-600 p-4">
       <header className="">
-        <Navbar route="Aplicación" atras="#" />
+        <Navbar route="MoveWell" atras="/" />
       </header>
       <main className="grid flex-1 gap-4">
-        <Card className="flex items-center justify-center">
-          <CardContent className="flex items-center gap-4 ">
-            <UserIcon className="h-8 w-8" />
-            <Link className="text-lg font-semibold" href="/application/forum">
-              Foro
+        <Card className="relative flex items-center justify-center overflow-hidden border-2 border-white">
+          {/* Background layer */}
+          <div className="absolute inset-0 bg-opacity-75 bg-[url('/imagenForo.jpeg')] bg-cover bg-center blur-sm"></div>
+          <CardContent className="z-10 flex w-56 items-center justify-center gap-4 rounded-lg border-2 border-black bg-white pt-5 text-black">
+            <Link
+              href={`/application/forum`}
+              className="flex items-center gap-4"
+            >
+              <div>
+                <UserIcon className="h-8 w-8" />
+              </div>
+              <div className="text-lg font-bold">Foro</div>
             </Link>
           </CardContent>
         </Card>
-        <Card className="flex items-center justify-center">
-          <CardContent className="flex items-center gap-4">
-            <ActivityIcon className="h-8 w-8" />
+
+        <Card className="relative flex items-center justify-center overflow-hidden border-2 border-white">
+          {/* Blurred background layer */}
+          <div className="absolute inset-0 bg-[url('https://img.freepik.com/vector-gratis/conjunto-iconos-planos-fitness_1284-34012.jpg')] bg-cover bg-center blur-sm"></div>
+
+          {/* Card Content */}
+          <CardContent className="z-10 flex items-center gap-4">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline">Empezar Rutina</Button>
+                <div className="z-10 flex w-56 items-center gap-3 rounded-lg border-2 border-black bg-white pb-4 pl-3 pt-5 text-black">
+                  <ActivityIcon className="h-8 w-8" />
+                  <Button variant="ghost" className="text-lg font-bold">
+                    Empezar Rutina
+                  </Button>
+                </div>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -90,11 +107,14 @@ export default async function Component() {
             </Dialog>
           </CardContent>
         </Card>
-        <Card className="flex items-center justify-center">
-          <CardContent className="flex items-center gap-4">
+        <Card className="relative flex items-center justify-center overflow-hidden border-2 border-white">
+          {/* Background layer */}
+          <div className="absolute inset-0 bg-opacity-75 bg-[url('https://img.freepik.com/vector-gratis/fondo-dia-mundial-salud-dibujado-mano_23-2149306514.jpg')] bg-cover bg-center blur-sm"></div>
+
+          <CardContent className="z-10 flex w-56 items-center justify-center gap-4 rounded-lg border-2 border-black bg-white pt-5 text-black">
             <NutIcon className="h-8 w-8" />
             <Link className="text-lg font-semibold" href="#">
-              Nutrition
+              Nutrición
             </Link>
           </CardContent>
         </Card>

@@ -14,7 +14,7 @@ export default async function AplicationLayout({
     return <Unauth />;
   }
   return (
-    <div>
+    <div className="font-sans">
       {children}
       <Socorro />
     </div>
