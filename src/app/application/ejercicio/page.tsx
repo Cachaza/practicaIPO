@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardTitle, CardHeader, CardContent } from "@/components/ui/card";
 import { api } from "@/trpc/react";
+import Navbar from "@/components/navbar";
 
 export default function Component() {
   const router = useRouter();
@@ -53,18 +54,12 @@ export default function Component() {
     void refetch();
   }
 
-  console.log(rutinasJson);
-
   return (
     <div className="">
+      <Navbar route={titleName(tipo ?? "")} atras="/application" />
       <Card className="mb-6">
-        <CardHeader className="flex flex-row">
-          <Button variant="link" className="">
-            <Link href="/application">
-              <ResetIcon className="h-8 w-8" />
-            </Link>
-          </Button>
-          <CardTitle className="pl-5">{titleName(tipo ?? "")}</CardTitle>
+        <CardHeader className="">
+          <CardTitle className="text-center">Tus rutinas</CardTitle>
         </CardHeader>
         <CardContent className="flex h-full flex-col p-4 text-3xl">
           {rutinasJson?.map((rutina) => (
