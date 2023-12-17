@@ -31,6 +31,7 @@ export default function Component() {
 
   const rutinasJson = api.rutina.getLast4.useQuery({ type: tipo ?? "" }).data;
   const createRutinaApi = api.rutina.create.useMutation();
+  const { refetch } = api.rutina.getLast4.useQuery({ type: tipo ?? "" });
 
   const [rutinaName, setRutinaName] = useState<string>("");
   const [rutinaDescription, setRutinaDescription] = useState<string>("");
@@ -49,8 +50,7 @@ export default function Component() {
     };
 
     await createRutinaApi.mutateAsync(newRutina);
-
-    router.push("/aplication/ejercicio?tipo=" + tipo);
+    void refetch();
   }
 
   console.log(rutinasJson);
@@ -60,7 +60,7 @@ export default function Component() {
       <Card className="mb-6">
         <CardHeader className="flex flex-row">
           <Button variant="link" className="">
-            <Link href="/aplication">
+            <Link href="/application">
               <ResetIcon className="h-8 w-8" />
             </Link>
           </Button>
@@ -69,7 +69,7 @@ export default function Component() {
         <CardContent className="flex h-full flex-col p-4 text-3xl">
           {rutinasJson?.map((rutina) => (
             <div key={rutina.title}>
-              <Link href={`/aplication/ejercicio/rutina?id=${rutina.id}`}>
+              <Link href={`/application/ejercicio/rutina?id=${rutina.id}`}>
                 <Button variant="outline" className="mb-4 w-full">
                   {rutina.title ?? "Error"}
                 </Button>
