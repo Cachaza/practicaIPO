@@ -32,8 +32,9 @@ export default async function Home() {
             <Link
               href={session ? "/api/auth/signout" : "/api/auth/signin"}
               className="w-64 rounded-full bg-red-700/10 px-10 py-3 text-center font-semibold no-underline transition hover:bg-white/20"
+              aria-label={session ? "Cerrar sesión" : "Iniciar session"}
             >
-              {session ? "Cerrar sesesión" : "Iniciar session"}
+              {session ? "Cerrar sesión" : "Iniciar session"}
             </Link>
           </div>
         </div>
@@ -47,6 +48,7 @@ function botonApplication() {
       <Link
         href="/application"
         className="w-64 rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+        aria-label="Acceder a la aplicación"
       >
         Acceder a la aplicación
       </Link>
